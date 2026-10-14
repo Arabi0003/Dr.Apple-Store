@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 const hausaGreeting = "Assalamu Alaikum Jama'a Alhaji Dr Apple Gabanku Anan Shagonmu Dake Yanar Gizo";
 const phrases = [
-  ...Array(27).fill(hausaGreeting),
+  ...Array(3).fill(hausaGreeting),
   "مرحباً بكم في متجر د. أبل، وجهتكم الفاخرة للتقنية",
   "欢迎来到 Dr. Apple，您的尊贵科技之选",
   "Bienvenue chez Dr. Apple, votre destination tech premium"
