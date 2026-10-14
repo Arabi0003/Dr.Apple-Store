@@ -7,34 +7,34 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-white dark:bg-black border-t border-silver-200 dark:border-white/10 text-silver-600 dark:text-silver-400 text-[12px] pt-12 pb-8 relative z-20 text-center">
+    <footer className="w-full bg-white dark:bg-black border-t border-silver-200 dark:border-white/10 text-silver-600 dark:text-silver-400 text-[13px] pt-14 pb-24 md:pb-32 relative z-30 text-center">
       <div className="container-app flex flex-col items-center text-center">
 
-        {/* 5 Branches - Center Aligned */}
-        <div className="mb-10 w-full">
-          <h4 className="font-semibold text-silver-900 dark:text-white text-[13px] mb-4 tracking-wide uppercase text-center">
+        {/* 5 Kano Branches */}
+        <div className="mb-12 w-full">
+          <h4 className="font-bold text-silver-900 dark:text-white text-[14px] mb-5 tracking-wide uppercase text-center">
             Our 5 Branches in Kano
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {BRANCHES.map((b) => (
               <div
                 key={b.id}
-                className="p-4 rounded-xl bg-silver-100 dark:bg-white/5 border border-silver-200 dark:border-white/10 text-center flex flex-col items-center justify-center"
+                className="p-4 rounded-2xl bg-silver-100 dark:bg-white/5 border border-silver-200 dark:border-white/10 text-center flex flex-col items-center justify-center shadow-sm"
               >
-                <p className="font-semibold text-silver-900 dark:text-white text-[12px] leading-tight mb-1 text-center">
+                <p className="font-bold text-silver-900 dark:text-white text-[13px] leading-tight mb-1 text-center">
                   {b.name}
                 </p>
-                <p className="text-[11px] leading-relaxed mb-1 text-center">{b.address}</p>
-                <p className="text-[11px] text-silver-900 dark:text-white font-medium text-center">{b.phone}</p>
+                <p className="text-[11px] text-silver-600 dark:text-silver-400 leading-relaxed mb-1 text-center">{b.address}</p>
+                <p className="text-[11px] text-deep-orange-500 font-bold text-center">{b.phone}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Footer Navigation Columns - Center Aligned */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10 w-full text-center">
+        {/* Footer Navigation Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12 w-full text-center">
           <div className="flex flex-col items-center text-center">
-            <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Shop</h4>
+            <h4 className="font-bold text-silver-900 dark:text-white mb-3 text-[14px]">Shop</h4>
             <ul className="space-y-2 flex flex-col items-center">
               <li><Link href="/products" className="hover:text-deep-orange-500 transition-colors">All Products</Link></li>
               <li><Link href="/iphone" className="hover:text-deep-orange-500 transition-colors">iPhone</Link></li>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Support</h4>
+            <h4 className="font-bold text-silver-900 dark:text-white mb-3 text-[14px]">Support</h4>
             <ul className="space-y-2 flex flex-col items-center">
               <li><Link href="/faq" className="hover:text-deep-orange-500 transition-colors">FAQ</Link></li>
               <li><Link href="/contact" className="hover:text-deep-orange-500 transition-colors">Contact Us</Link></li>
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Legal</h4>
+            <h4 className="font-bold text-silver-900 dark:text-white mb-3 text-[14px]">Legal</h4>
             <ul className="space-y-2 flex flex-col items-center">
               <li>
                 <Link href="/privacy" className="hover:text-deep-orange-500 transition-colors font-medium text-silver-800 dark:text-silver-200">
@@ -70,58 +70,60 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Contact</h4>
+            <h4 className="font-bold text-silver-900 dark:text-white mb-3 text-[14px]">Contact</h4>
             <ul className="space-y-2 flex flex-col items-center">
-              <li className="text-silver-900 dark:text-white font-semibold">+234 813 784 3328</li>
-              <li>Info@drapple.com</li>
+              <li className="text-silver-900 dark:text-white font-bold text-[14px]">+234 813 784 3328</li>
+              <li className="text-silver-600 dark:text-silver-400">Info@drapple.com</li>
             </ul>
             <div className="flex justify-center gap-4 mt-4">
-              <a href="#" aria-label="Facebook" className="hover:text-deep-orange-500 transition-colors"><Icons.Facebook size={18} /></a>
-              <a href="#" aria-label="Instagram" className="hover:text-deep-orange-500 transition-colors"><Icons.Instagram size={18} /></a>
-              <a href="#" aria-label="YouTube" className="hover:text-deep-orange-500 transition-colors"><Icons.Youtube size={18} /></a>
-              <a href="#" aria-label="TikTok" className="hover:text-deep-orange-500 transition-colors"><Icons.Tiktok size={18} /></a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-deep-orange-500 transition-colors"><Icons.LinkedIn size={18} /></a>
+              <a href="#" aria-label="Facebook" className="text-silver-600 dark:text-silver-400 hover:text-deep-orange-500 transition-colors"><Icons.Facebook size={20} /></a>
+              <a href="#" aria-label="Instagram" className="text-silver-600 dark:text-silver-400 hover:text-deep-orange-500 transition-colors"><Icons.Instagram size={20} /></a>
+              <a href="#" aria-label="YouTube" className="text-silver-600 dark:text-silver-400 hover:text-deep-orange-500 transition-colors"><Icons.Youtube size={20} /></a>
+              <a href="#" aria-label="TikTok" className="text-silver-600 dark:text-silver-400 hover:text-deep-orange-500 transition-colors"><Icons.Tiktok size={20} /></a>
+              <a href="#" aria-label="LinkedIn" className="text-silver-600 dark:text-silver-400 hover:text-deep-orange-500 transition-colors"><Icons.LinkedIn size={20} /></a>
             </div>
           </div>
         </div>
 
-        {/* Center Bottom Bar — Company Credit & Legal */}
-        <div className="pt-6 border-t border-silver-200 dark:border-white/10 w-full flex flex-col items-center justify-center gap-3 text-center">
-          <p className="text-[12px] text-silver-600 dark:text-silver-400 text-center">
-            Copyright &copy; {year} Dr. Apple Kano. All rights reserved.
+        {/* Center Bottom Bar — Highlight Box for High Visibility on Desktop */}
+        <div className="pt-8 border-t border-silver-200 dark:border-white/10 w-full flex flex-col items-center justify-center gap-4 text-center">
+          
+          <p className="text-[13px] text-silver-600 dark:text-silver-400 text-center">
+            Copyright &copy; {year} <span className="font-bold text-silver-900 dark:text-white">Dr. Apple Kano</span>. All rights reserved.
           </p>
 
-          <p className="text-[13px] text-silver-800 dark:text-silver-200 font-medium text-center">
-            Powered by{" "}
-            <a
-              href="https://www.yalerima.com.ng"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-deep-orange-500 hover:text-deep-orange-600 underline underline-offset-2"
-            >
-              Yalerima Technologies Limited
-            </a>{" "}
-            (
-            <a
-              href="https://www.yalerima.com.ng"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-silver-500 dark:text-silver-400 hover:text-deep-orange-500 underline underline-offset-2"
-            >
-              www.yalerima.com.ng
-            </a>
-            )
-          </p>
+          <div className="p-4 rounded-2xl bg-silver-100/90 dark:bg-white/5 border border-silver-200 dark:border-white/10 max-w-2xl w-full text-center shadow-sm">
+            <p className="text-[14px] text-silver-900 dark:text-white font-medium text-center">
+              Powered by{" "}
+              <a
+                href="https://www.yalerima.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-deep-orange-500 hover:text-deep-orange-600 underline underline-offset-4 transition-colors"
+              >
+                Yalerima Technologies Limited
+              </a>{" "}
+              (<a
+                href="https://www.yalerima.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-silver-600 dark:text-silver-300 hover:text-deep-orange-500 underline underline-offset-2 transition-colors"
+              >
+                www.yalerima.com.ng
+              </a>)
+            </p>
+          </div>
 
-          <div className="flex justify-center items-center gap-6 text-[12px] pt-1">
-            <Link href="/privacy" className="font-semibold text-silver-800 dark:text-silver-200 hover:text-deep-orange-500 transition-colors">
+          <div className="flex justify-center items-center gap-6 text-[13px] pt-2">
+            <Link href="/privacy" className="font-semibold text-silver-800 dark:text-silver-200 hover:text-deep-orange-500 transition-colors underline underline-offset-2">
               Privacy Policy
             </Link>
-            <span className="text-silver-300 dark:text-silver-700">|</span>
-            <Link href="/terms" className="font-semibold text-silver-800 dark:text-silver-200 hover:text-deep-orange-500 transition-colors">
+            <span className="text-silver-300 dark:text-silver-700">•</span>
+            <Link href="/terms" className="font-semibold text-silver-800 dark:text-silver-200 hover:text-deep-orange-500 transition-colors underline underline-offset-2">
               Terms of Use
             </Link>
           </div>
+
         </div>
 
       </div>
