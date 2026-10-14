@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 
+// Hausa repeats 27 times, followed by Arabic, Chinese, and French
+const hausaGreeting = "Assalamu Alaikum Jama'a Dr. Apple Gabanku Anan Shagwanmu Dake Internet";
 const phrases = [
-  "Assalamu Alaikum Jama'a Dr. Apple Gabanku Anan Shagwanmu Dake Internet",
-  "Assalamu Alaikum Jama'a Dr. Apple Gabanku Anan Shagwanmu Dake Internet",
+  ...Array(27).fill(hausaGreeting),
   "مرحباً بكم في متجر د. أبل، وجهتكم الفاخرة للتقنية",
   "欢迎来到 Dr. Apple，您的尊贵科技之选",
-  "Welcome to Dr. Apple, your premium tech destination",
   "Bienvenue chez Dr. Apple, votre destination tech premium"
 ];
 
@@ -21,15 +21,16 @@ export default function Typewriter() {
     const handleType = () => {
       const i = loopNum % phrases.length;
       const fullText = phrases[i];
+      
       setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
-      setTypingSpeed(isDeleting ? 25 : 55 + Math.random() * 30);
+      setTypingSpeed(isDeleting ? 20 : 40 + Math.random() * 30);
 
       if (!isDeleting && text === fullText) {
         setTimeout(() => setIsDeleting(true), 2500);
       } else if (isDeleting && text === "") {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
-        setTypingSpeed(400);
+        setTypingSpeed(300);
       }
     };
     const timer = setTimeout(handleType, typingSpeed);
@@ -37,10 +38,10 @@ export default function Typewriter() {
   }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <div className="min-h-[90px] md:min-h-[60px] flex items-center justify-center px-4">
-      <p className="text-[22px] md:text-[30px] font-bold text-silver-900 dark:text-white transition-colors duration-300 text-center tracking-tight leading-tight max-w-4xl">
+    <div className="min-h-[120px] md:min-h-[140px] flex items-center justify-center px-4 w-full">
+      <p className="text-[28px] sm:text-[36px] md:text-[46px] lg:text-[54px] font-serif font-bold text-silver-900 dark:text-white transition-colors duration-300 text-center tracking-tight leading-[1.1] max-w-5xl">
         {text}
-        <span className="inline-block w-[3px] h-[28px] md:h-[34px] bg-deep-orange-500 ml-1 animate-pulse align-middle" />
+        <span className="inline-block w-[3px] h-[35px] md:h-[55px] bg-deep-orange-500 ml-2 animate-pulse align-middle" />
       </p>
     </div>
   );
