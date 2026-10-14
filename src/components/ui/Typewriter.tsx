@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 
-// Corrected Hausa Greeting (repeats 27 times) followed by Arabic, Chinese, French
 const hausaGreeting = "Assalamu Alaikum Jama'a Alhaji Dr Apple Gabanku Anan Shagonmu Dake Yanar Gizo";
 const phrases = [
   ...Array(27).fill(hausaGreeting),
@@ -38,10 +37,10 @@ export default function Typewriter() {
   }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <div className="min-h-[120px] md:min-h-[140px] flex items-center justify-center px-4 w-full">
-      <p className="text-[28px] sm:text-[36px] md:text-[46px] lg:text-[54px] font-serif font-bold text-silver-900 dark:text-white transition-colors duration-300 text-center tracking-tight leading-[1.1] max-w-5xl">
+    <div className="w-full h-[110px] sm:h-[130px] md:h-[150px] flex items-center justify-center overflow-hidden px-2">
+      <p className="text-[24px] sm:text-[34px] md:text-[44px] lg:text-[50px] font-serif font-bold text-silver-900 dark:text-white transition-colors duration-300 text-center tracking-tight leading-[1.15] max-w-5xl">
         {text}
-        <span className="inline-block w-[3px] h-[35px] md:h-[55px] bg-deep-orange-500 ml-2 animate-pulse align-middle" />
+        <span className="inline-block w-[3px] h-[28px] sm:h-[38px] md:h-[48px] bg-deep-orange-500 ml-2 animate-pulse align-middle" />
       </p>
     </div>
   );

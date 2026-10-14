@@ -8,53 +8,53 @@ import Typewriter from "@/components/ui/Typewriter";
 
 export default function HeroSection() {
   return (
-    <div className="max-w-[1200px] mx-auto px-4 md:px-6 flex flex-col items-center">
+    <div className="container-app flex flex-col items-center text-center">
+      
+      {/* Typewriter Container */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-6 w-full"
+        transition={{ duration: 0.8 }}
+        className="w-full mb-4"
       >
         <Typewriter />
       </motion.div>
 
+      {/* Main Hero Heading */}
       <motion.h1
-        initial={{ opacity: 0, y: 40, filter: "blur(14px)" }}
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="text-[42px] sm:text-[58px] md:text-[76px] font-bold text-silver-900 dark:text-white tracking-[-0.04em] text-center leading-[1.05] max-w-5xl"
+        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="text-[38px] sm:text-[56px] md:text-[72px] font-bold text-silver-900 dark:text-white tracking-[-0.03em] leading-[1.08] max-w-4xl"
       >
         Pro. Beyond.
         <br />
-        <motion.span
-          initial={{ opacity: 0, backgroundPosition: "0% 50%" }}
-          animate={{ opacity: 1, backgroundPosition: "100% 50%" }}
-          transition={{ duration: 1.4, delay: 0.5 }}
-          className="text-transparent bg-clip-text bg-gradient-to-r from-silver-400 via-silver-700 to-silver-400 dark:from-silver-400 dark:via-white dark:to-silver-400"
-        >
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-silver-400 via-silver-700 to-silver-400 dark:from-silver-400 dark:via-white dark:to-silver-400">
           Available right now.
-        </motion.span>
+        </span>
       </motion.h1>
 
+      {/* Hero Subtitle */}
       <motion.p
-        initial={{ opacity: 0, y: 18 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.55 }}
-        className="mt-6 text-[17px] md:text-[21px] text-silver-600 dark:text-silver-400 font-medium text-center max-w-2xl"
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="mt-6 text-[16px] sm:text-[19px] md:text-[22px] text-silver-600 dark:text-silver-400 font-medium max-w-2xl leading-relaxed"
       >
         Genuine Apple hardware. Five Kano branches. Expert support.
       </motion.p>
 
+      {/* Hero CTA Button */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.75, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-10"
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="mt-8 md:mt-10"
       >
-        <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }}>
+        <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
           <Link
             href="/products"
-            className="group inline-flex items-center justify-center gap-2 px-10 py-4 bg-deep-orange-500 text-white rounded-full text-[15px] font-bold hover:bg-deep-orange-600 transition-colors shadow-[0_0_30px_rgba(255,90,0,0.35)]"
+            className="group inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 bg-deep-orange-500 text-white rounded-full text-[15px] sm:text-[16px] font-bold hover:bg-deep-orange-600 transition-colors shadow-[0_0_25px_rgba(255,90,0,0.35)]"
           >
             Buy Now
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
