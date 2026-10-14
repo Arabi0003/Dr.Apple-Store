@@ -6,16 +6,14 @@ import { BRANCHES } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="w-full bg-white/95 dark:bg-black/80 backdrop-blur-xl border-t border-silver-200 dark:border-white/10 text-silver-600 dark:text-silver-400 text-[12px] pt-12 pb-6 transition-colors duration-300 relative z-20">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+      <div className="container-app">
         
         <div className="mb-10">
           <h4 className="font-semibold text-silver-900 dark:text-white text-[13px] mb-4 tracking-wide uppercase">Our 5 Branches in Kano</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {BRANCHES.map((b) => (
               <div key={b.id} className="p-4 rounded-xl bg-silver-100 dark:bg-white/5 border border-silver-200 dark:border-white/10">
-                <div className="flex items-center gap-2 mb-2">
-                  <p className="font-semibold text-silver-900 dark:text-white text-[12px] leading-tight">{b.name}</p>
-                </div>
+                <p className="font-semibold text-silver-900 dark:text-white text-[12px] leading-tight mb-1">{b.name}</p>
                 <p className="text-[11px] leading-relaxed mb-1">{b.address}</p>
                 <p className="text-[11px] text-silver-900 dark:text-white font-medium">{b.phone}</p>
               </div>
@@ -34,11 +32,12 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Services & Support</h4>
+            <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Support</h4>
             <ul className="space-y-2">
               <li><Link href="/trade-in" className="hover:text-deep-orange-500 transition-colors">Trade-In</Link></li>
               <li><Link href="/faq" className="hover:text-deep-orange-500 transition-colors">FAQ</Link></li>
               <li><Link href="/contact" className="hover:text-deep-orange-500 transition-colors">Contact Us</Link></li>
+              <li><Link href="/branches" className="hover:text-deep-orange-500 transition-colors">Branches</Link></li>
             </ul>
           </div>
           <div>
@@ -51,26 +50,34 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-silver-900 dark:text-white mb-3">Follow Us</h4>
             <div className="flex gap-4">
-              <a href="#" className="hover:text-deep-orange-500 transition-colors"><Icons.Facebook size={18} /></a>
-              <a href="#" className="hover:text-deep-orange-500 transition-colors"><Icons.Instagram size={18} /></a>
-              <a href="#" className="hover:text-deep-orange-500 transition-colors"><Icons.Youtube size={18} /></a>
-              <a href="#" className="hover:text-deep-orange-500 transition-colors"><Icons.Tiktok size={18} /></a>
-              <a href="#" className="hover:text-deep-orange-500 transition-colors"><Icons.LinkedIn size={18} /></a>
+              <a href="#" aria-label="Facebook" className="hover:text-deep-orange-500 transition-colors"><Icons.Facebook size={18} /></a>
+              <a href="#" aria-label="Instagram" className="hover:text-deep-orange-500 transition-colors"><Icons.Instagram size={18} /></a>
+              <a href="#" aria-label="YouTube" className="hover:text-deep-orange-500 transition-colors"><Icons.Youtube size={18} /></a>
+              <a href="#" aria-label="TikTok" className="hover:text-deep-orange-500 transition-colors"><Icons.Tiktok size={18} /></a>
+              <a href="#" aria-label="LinkedIn" className="hover:text-deep-orange-500 transition-colors"><Icons.LinkedIn size={18} /></a>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-silver-200 dark:border-white/10 text-[11px] md:text-[12px]">
-          <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-center md:text-left mb-4 md:mb-0">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-silver-200 dark:border-white/10 text-[11px] md:text-[12px]">
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-center sm:text-left">
             <span>Copyright &copy; {new Date().getFullYear()} Dr. Apple Kano. All rights reserved.</span>
-            <span className="hidden md:inline">|</span>
+            <span className="hidden sm:inline text-silver-300">|</span>
             <span>
-              Powered by <a href="https://www.yalerima.com.ng" target="_blank" rel="noopener noreferrer" className="font-semibold text-silver-800 dark:text-silver-300 hover:text-deep-orange-500 dark:hover:text-deep-orange-500 transition-colors">Yalerima Technologies Limited</a>
+              Powered by{" "}
+              <a
+                href="https://www.yalerima.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-silver-900 dark:text-white hover:text-deep-orange-500 transition-colors underline underline-offset-2"
+              >
+                Yalerima Technologies Limited
+              </a>
             </span>
           </div>
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-deep-orange-500 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-deep-orange-500 transition-colors">Terms of Use</Link>
+          <div className="flex gap-5">
+            <Link href="/privacy" className="hover:text-deep-orange-500 transition-colors font-medium">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-deep-orange-500 transition-colors font-medium">Terms of Use</Link>
           </div>
         </div>
       </div>

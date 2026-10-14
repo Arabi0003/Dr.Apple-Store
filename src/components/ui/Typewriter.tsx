@@ -20,10 +20,8 @@ export default function Typewriter() {
     const handleType = () => {
       const i = loopNum % phrases.length;
       const fullText = phrases[i];
-      
       setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
       setTypingSpeed(isDeleting ? 20 : 40 + Math.random() * 30);
-
       if (!isDeleting && text === fullText) {
         setTimeout(() => setIsDeleting(true), 2500);
       } else if (isDeleting && text === "") {
