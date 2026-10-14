@@ -27,7 +27,7 @@ export default function HomePage() {
   return (
     <main ref={containerRef} className="relative w-full min-h-screen bg-silver-100 dark:bg-black transition-colors duration-300">
 
-      {/* LOCAL VIDEO BACKGROUND — public/dr.mp4 */}
+      {/* FAST-LOADING OPTIMIZED VIDEO BACKGROUND */}
       <motion.div style={{ opacity: bgOpacity }} className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 bg-gradient-to-br from-silver-200 to-white dark:from-black dark:to-zinc-900" />
@@ -36,6 +36,7 @@ export default function HomePage() {
             loop
             muted
             playsInline
+            preload="auto"
             poster="/dr.png"
             className="absolute inset-0 w-full h-full object-cover opacity-50 dark:opacity-80"
           >
@@ -51,7 +52,6 @@ export default function HomePage() {
       <section className="relative z-10 min-h-screen flex flex-col justify-center pt-16 pb-20">
         <HeroSection />
 
-        {/* Animated scroll cue */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -69,7 +69,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 2. HIGHLIGHTS — staggered rise */}
+      {/* 2. HIGHLIGHTS */}
       <section className="relative z-10 py-16 md:py-24">
         <ScrollReveal variant="stagger" className="max-w-[1200px] mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
