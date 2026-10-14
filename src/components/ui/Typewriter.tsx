@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 
-// Hausa repeats 27 times, followed by Arabic, Chinese, and French
-const hausaGreeting = "Assalamu Alaikum Jama'a Dr. Apple Gabanku Anan Shagwanmu Dake Internet";
+// Corrected Hausa Greeting (repeats 27 times) followed by Arabic, Chinese, French
+const hausaGreeting = "Assalamu Alaikum Jama'a Alhaji Dr Apple Gabanku Anan Shagonmu Dake Yanar Gizo";
 const phrases = [
   ...Array(27).fill(hausaGreeting),
   "مرحباً بكم في متجر د. أبل، وجهتكم الفاخرة للتقنية",
