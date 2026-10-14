@@ -1,57 +1,77 @@
 ﻿"use client";
 
 import React, { useState } from "react";
-import { ArrowRight } from "lucide-react";
-import AnimatedSection from "@/components/ui/AnimatedSection";
+import { motion } from "framer-motion";
+import { Mail, ArrowRight, Users, Package, Calendar, Star, type LucideIcon } from "lucide-react";
+import AnimatedSection, { staggerChild } from "@/components/ui/AnimatedSection";
 import { STORE_STATS } from "@/lib/constants";
+
+const statsIconMap: Record<string, LucideIcon> = {
+  Users,
+  Package,
+  Calendar,
+  Star,
+};
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
-  const [done, setDone] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) { setDone(true); setEmail(""); setTimeout(() => setDone(false), 3000); }
+    if (email) {
+      setSubmitted(true);
+      setEmail("");
+      setTimeout(() => setSubmitted(false), 4000);
+    }
   };
 
   return (
-    <section className="py-20 md:py-28 bg-[#0a0f1a] text-white">
-      <div className="container-app">
-
-        {/* Stats */}
-        <AnimatedSection variant="stagger">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 pb-16 border-b border-white/10">
-            {STORE_STATS.map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-bold tracking-tight">{s.value}</p>
-                <p className="text-[12px] text-white/40 mt-1 uppercase tracking-wider">{s.label}</p>
-              </div>
-            ))}
+    <section className="section-padding gradient-bg-blue text-white relative overflow-hidden">
+      <div className="container-app relative z-10">
+        <AnimatedSection variant="stagger" className="mb-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {STORE_STATS.map((stat: { label: string; value: string; icon: string }) => {
+              const Icon = statsIconMap[stat.icon] || Users;
+              return (
+                <motion.div key={stat.label} variants={staggerChild} className="p-4">
+                  <div className="w-10 h-10 mx-auto mb-2 bg-blue-700/50 text-blue-300 flex items-center justify-center rounded-none">
+                    <Icon size={20} />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-xs md:text-sm text-silver-300">{stat.label}</div>
+                </motion.div>
+              );
+            })}
           </div>
         </AnimatedSection>
 
-        {/* CTA */}
-        <AnimatedSection variant="fadeUp">
-          <div className="max-w-lg mx-auto text-center">
-            <h2 className="text-[28px] md:text-[30px] font-bold tracking-tight mb-3">
-              New stock alerts
-            </h2>
-            <p className="text-sm text-white/40 mb-8">
-              Be the first to know when the latest iPhone or MacBook arrives in Kano.
+        <AnimatedSection variant="scaleIn" delay={0.2}>
+          <div className="max-w-2xl mx-auto text-center bg-white/5 border border-white/10 p-8 md:p-12 rounded-none backdrop-blur-sm">
+            <Mail size={32} className="text-blue-300 mx-auto mb-3" />
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Stay Connected With Dr. Apple</h3>
+            <p className="text-silver-300 text-sm mb-6 max-w-md mx-auto">
+              Get notified when new iPhone and Mac models arrive in Kano with exclusive subscriber offers.
             </p>
-            <form onSubmit={submit} className="flex gap-2">
+
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto">
               <input
-                type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@email.com"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-blue-500 transition-colors"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                required
+                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-silver-400 text-sm rounded-none focus:outline-none focus:border-blue-400"
               />
-              <button type="submit" className="px-5 py-3 bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500 transition-colors flex items-center gap-1.5">
-                {done ? "Done" : <><span className="hidden sm:inline">Subscribe</span><ArrowRight size={14} /></>}
+              <button
+                type="submit"
+                className="px-6 py-3 bg-white text-blue-950 font-bold text-sm rounded-none hover:bg-silver-100 transition-colors flex items-center justify-center gap-2"
+              >
+                {submitted ? "Subscribed! ✓" : <><span>Subscribe</span><ArrowRight size={16} /></>}
               </button>
             </form>
           </div>
         </AnimatedSection>
-
       </div>
     </section>
   );

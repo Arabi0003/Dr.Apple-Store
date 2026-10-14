@@ -15,9 +15,73 @@ export const STORE_INFO = {
   name: "Dr. Apple",
   tagline: "Premium Apple Products in Kano",
   description: "Kano's premier destination for authentic Apple products across five branches.",
+  address: "No. 15, Murtala Mohammed Way, Kano, Nigeria",
   phone: "+234 813 784 3328",
+  phoneAlt: "+234 903 000 0000",
   email: "Info@drapple.com",
+  hours: {
+    weekdays: "9:00 AM – 7:00 PM",
+    saturday: "10:00 AM – 6:00 PM",
+    sunday: "Closed",
+  },
+  social: {
+    instagram: "https://instagram.com",
+    twitter: "https://twitter.com",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me/2348137843328",
+  },
 } as const;
+
+export const STORE_STATS = [
+  { label: "Satisfied Customers", value: "5,000+", icon: "Users" },
+  { label: "Devices Delivered", value: "12,000+", icon: "Package" },
+  { label: "Years Serving Kano", value: "4+", icon: "Calendar" },
+  { label: "5-Star Ratings", value: "1,200+", icon: "Star" },
+] as const;
+
+export const PRODUCT_CATEGORIES = [
+  { id: "iphone", name: "iPhone", description: "Latest iPhones with official warranty", icon: "Smartphone" },
+  { id: "macbook", name: "MacBook", description: "Workstations powered by Apple Silicon", icon: "Laptop" },
+  { id: "ipad", name: "iPad", description: "Tablets for productivity & creativity", icon: "Tablet" },
+  { id: "watch", name: "Watch", description: "Smartwatches for fitness & connectivity", icon: "Watch" },
+  { id: "airpods", name: "AirPods", description: "Wireless spatial audio devices", icon: "Headphones" },
+  { id: "accessories", name: "Accessories", description: "MagSafe cases, chargers & cables", icon: "Cable" },
+] as const;
+
+export const TESTIMONIALS = [
+  {
+    id: 1,
+    name: "Aminu Dantata",
+    role: "Business Owner",
+    location: "Nasarawa GRA, Kano",
+    content: "Dr. Apple gave me the smoothest experience buying my MacBook Pro in Kano. 100% genuine with authentic warranty.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Dr. Fatima Abubakar",
+    role: "Consultant Physician",
+    location: "Kano",
+    content: "Authentic Apple devices with zero worries about counterfeits. The staff helped migrate my data seamlessly.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Ibrahim Suleiman",
+    role: "Software Architect",
+    location: "Kano",
+    content: "The trade-in program and customer support make Dr. Apple unmatched in Northern Nigeria. Top-tier service.",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "Halima Yusuf",
+    role: "Creative Director",
+    location: "BUK Road, Kano",
+    content: "Got my iPad Pro M4 and Apple Pencil Pro here. Outstanding customer care and genuine warranty coverage.",
+    rating: 5,
+  },
+] as const;
 
 export const BRANCHES = [
   {
@@ -120,7 +184,7 @@ export const FEATURED_PRODUCTS = [
   },
   {
     id: 6,
-    name: "MacBook Air 15\" M3",
+    name: 'MacBook Air 15" M3',
     price: "₦1,650,000",
     originalPrice: null,
     category: "MacBook",

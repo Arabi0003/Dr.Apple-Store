@@ -33,9 +33,9 @@ export default function Button({
   type = "button",
 }: ButtonProps) {
   const variantClasses = {
-    primary: "bg-blue-600 text-white border-2 border-blue-600 hover:bg-blue-700 hover:border-blue-700 active:bg-blue-800 shadow-md",
-    secondary: "bg-transparent text-blue-700 border-2 border-blue-600 hover:bg-blue-600 hover:text-white active:bg-blue-700",
-    ghost: "bg-transparent text-blue-700 border-2 border-transparent hover:bg-blue-50 hover:border-blue-100",
+    primary: "bg-deep-orange-500 text-white border-2 border-deep-orange-500 hover:bg-deep-orange-600 shadow-md",
+    secondary: "bg-transparent text-silver-900 dark:text-white border-2 border-silver-300 dark:border-white/20 hover:border-deep-orange-500",
+    ghost: "bg-transparent text-silver-900 dark:text-white border-2 border-transparent hover:bg-silver-100 dark:hover:bg-white/10",
     premium: "bg-accent-gold text-blue-950 border-2 border-accent-gold hover:bg-yellow-500 font-bold",
   };
 
@@ -46,8 +46,7 @@ export default function Button({
   };
 
   const combinedClasses = clsx(
-    "inline-flex items-center justify-center gap-2.5 font-semibold transition-all duration-300 ease-out select-none cursor-pointer",
-    "rounded-none", // Square corners specified
+    "inline-flex items-center justify-center gap-2.5 font-semibold transition-all duration-300 ease-out select-none cursor-pointer rounded-full",
     variantClasses[variant],
     sizeClasses[size],
     fullWidth && "w-full",
@@ -56,7 +55,12 @@ export default function Button({
   );
 
   const motionProps = {
-    whileHover: disabled ? {} : { scale: 1.025, transition: { type: "spring", stiffness: 400, damping: 15 } },
+    whileHover: disabled
+      ? {}
+      : {
+          scale: 1.025,
+          transition: { type: "spring" as const, stiffness: 400, damping: 15 },
+        },
     whileTap: disabled ? {} : { scale: 0.975 },
   };
 
