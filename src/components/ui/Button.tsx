@@ -1,90 +1,73 @@
-﻿"use client";
+﻿import React from 'react';
+import Link from 'next/link';
 
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { clsx } from "clsx";
-
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: "primary" | "secondary" | "ghost" | "premium";
-  size?: "sm" | "md" | "lg";
-  href?: string;
-  onClick?: () => void;
-  disabled?: boolean;
-  fullWidth?: boolean;
-  icon?: React.ReactNode;
-  iconPosition?: "left" | "right";
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'premium' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  children?: React.ReactNode;
   className?: string;
-  type?: "button" | "submit" | "reset";
+  icon?: React.ReactNode;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
-export default function Button({
+export function Button({
+  variant = 'primary',
+  size = 'md',
   children,
-  variant = "primary",
-  size = "md",
-  href,
-  onClick,
-  disabled = false,
-  fullWidth = false,
+  className = '',
   icon,
-  iconPosition = "left",
-  className,
-  type = "button",
+  href,
+  target,
+  rel,
+  ...props
 }: ButtonProps) {
-  const variantClasses = {
-    primary: "bg-deep-orange-500 text-white border-2 border-deep-orange-500 hover:bg-deep-orange-600 shadow-md",
-    secondary: "bg-transparent text-silver-900 dark:text-white border-2 border-silver-300 dark:border-white/20 hover:border-deep-orange-500",
-    ghost: "bg-transparent text-silver-900 dark:text-white border-2 border-transparent hover:bg-silver-100 dark:hover:bg-white/10",
-    premium: "bg-accent-gold text-blue-950 border-2 border-accent-gold hover:bg-yellow-500 font-bold",
+  const baseStyles = 'inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  
+  const variantStyles = {
+    primary: 'bg-[#FF5A00] hover:bg-[#e04f00] text-white shadow-md focus:ring-[#FF5A00]',
+    secondary: 'bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 focus:ring-zinc-500',
+    ghost: 'bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 focus:ring-zinc-500',
+    premium: 'bg-gradient-to-r from-[#FF5A00] to-amber-500 hover:from-[#e04f00] hover:to-amber-600 text-white shadow-lg focus:ring-[#FF5A00]',
+    outline: 'border border-zinc-300 dark:border-zinc-700 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:ring-zinc-500',
   };
 
-  const sizeClasses = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-3.5 text-base md:text-lg",
+  const sizeStyles = {
+    sm: 'text-xs px-3 py-1.5 rounded-lg',
+    md: 'text-sm px-4 py-2 rounded-xl',
+    lg: 'text-base px-6 py-3 rounded-2xl',
   };
 
-  const combinedClasses = clsx(
-    "inline-flex items-center justify-center gap-2.5 font-semibold transition-all duration-300 ease-out select-none cursor-pointer rounded-full",
-    variantClasses[variant],
-    sizeClasses[size],
-    fullWidth && "w-full",
-    disabled && "opacity-60 cursor-not-allowed",
-    className
-  );
-
-  const motionProps = {
-    whileHover: disabled
-      ? {}
-      : {
-          scale: 1.025,
-          transition: { type: "spring" as const, stiffness: 400, damping: 15 },
-        },
-    whileTap: disabled ? {} : { scale: 0.975 },
-  };
+  const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
   const content = (
     <>
-      {icon && iconPosition === "left" && <span className="flex-shrink-0">{icon}</span>}
-      <span>{children}</span>
-      {icon && iconPosition === "right" && <span className="flex-shrink-0">{icon}</span>}
+      {icon && <span className="inline-flex shrink-0">{icon}</span>}
+      {children && <span>{children}</span>}
     </>
   );
 
-  if (href && !disabled) {
-    return (
-      <motion.div {...motionProps} className={fullWidth ? "w-full" : "inline-block"}>
-        <Link href={href} className={combinedClasses}>
+  if (href) {
+    if (href.startsWith('http') || href.startsWith('tel:') || href.startsWith('mailto:')) {
+      return (
+        <a href={href} target={target} rel={rel} className={combinedClasses}>
           {content}
-        </Link>
-      </motion.div>
+        </a>
+      );
+    }
+    return (
+      <Link href={href} className={combinedClasses}>
+        {content}
+      </Link>
     );
   }
 
   return (
-    <motion.button {...motionProps} type={type} onClick={onClick} disabled={disabled} className={combinedClasses}>
+    <button className={combinedClasses} {...props}>
       {content}
-    </motion.button>
+    </button>
   );
 }
+
+export default Button;

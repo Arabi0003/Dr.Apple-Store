@@ -1,47 +1,48 @@
-﻿import React from "react";
-import { clsx } from "clsx";
+﻿import React from 'react';
 
-interface SectionHeadingProps {
+export interface SectionHeadingProps {
   title: string;
   subtitle?: string;
-  align?: "left" | "center" | "right";
-  gradient?: boolean;
-  light?: boolean;
+  align?: 'left' | 'center' | 'right';
   className?: string;
+  light?: boolean;
+  gradient?: boolean;
 }
 
-export default function SectionHeading({
+export function SectionHeading({
   title,
   subtitle,
-  align = "center",
-  gradient = false,
+  align = 'center',
+  className = '',
   light = false,
-  className,
+  gradient = false,
 }: SectionHeadingProps) {
   const alignmentClasses = {
-    left: "text-left items-start",
-    center: "text-center items-center",
-    right: "text-right items-end",
+    left: 'text-left',
+    center: 'text-center mx-auto',
+    right: 'text-right ml-auto',
   };
 
+  const titleColorClass = light 
+    ? 'text-white' 
+    : gradient 
+      ? 'bg-gradient-to-r from-zinc-900 via-[#FF5A00] to-zinc-900 dark:from-white dark:via-[#FF5A00] dark:to-white bg-clip-text text-transparent'
+      : 'text-zinc-900 dark:text-white';
+
+  const subtitleColorClass = light ? 'text-zinc-300' : 'text-zinc-600 dark:text-zinc-400';
+
   return (
-    <div className={clsx("flex flex-col gap-3 mb-10 md:mb-14", alignmentClasses[align], className)}>
-      <div className={clsx("h-1 w-12", light ? "bg-blue-400" : "bg-blue-600")} />
-      <h2
-        className={clsx(
-          "font-bold tracking-tight text-[28px] md:text-[30px] lg:text-[32px] leading-tight",
-          gradient && "gradient-text-blue",
-          light && !gradient && "text-white",
-          !light && !gradient && "text-blue-900"
-        )}
-      >
+    <div className={`max-w-3xl mb-10 ${alignmentClasses[align]} ${className}`}>
+      <h2 className={`text-3xl md:text-4xl font-extrabold tracking-tight font-calibri mb-3 ${titleColorClass}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className={clsx("text-base md:text-lg max-w-2xl leading-relaxed font-normal", light ? "text-silver-300" : "text-silver-600")}>
+        <p className={`text-base md:text-lg font-calibri leading-relaxed ${subtitleColorClass}`}>
           {subtitle}
         </p>
       )}
     </div>
   );
 }
+
+export default SectionHeading;

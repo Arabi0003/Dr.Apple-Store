@@ -2,176 +2,144 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { clsx } from "clsx";
-import { Menu, X, Search, ShoppingBag, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { NAV_LINKS } from "@/lib/constants";
+import { Search, ShoppingBag, Sun, Moon, Menu, X, Phone } from "lucide-react";
+
+const NAV_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "iPhone", href: "/iphone" },
+  { name: "Mac", href: "/mac" },
+  { name: "iPad", href: "/ipad" },
+  { name: "Watch", href: "/watch" },
+  { name: "Accessories", href: "/accessories" },
+  { name: "Branches", href: "/branches" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => setMounted(true), []);
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    setMounted(true);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
-
-  useEffect(() => { setMobileOpen(false); }, [pathname]);
-
-  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
-
   return (
-    <>
-      <header
-        className={clsx(
-          "fixed top-0 inset-x-0 z-50 h-[60px] transition-all duration-300",
-          scrolled
-            ? "bg-white/90 dark:bg-black/85 backdrop-blur-xl border-b border-silver-200 dark:border-white/10 shadow-sm"
-            : "bg-white/50 dark:bg-black/40 backdrop-blur-md border-b border-transparent"
-        )}
-      >
-        <div className="container-app h-full flex items-center justify-between">
-          
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 z-10 group flex-shrink-0">
-            <motion.img
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm border-b border-zinc-200/50 dark:border-zinc-800/50 h-[56px] md:h-[60px]"
+          : "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-sm border-b border-zinc-200/30 dark:border-zinc-800/30 h-[56px] md:h-[60px]"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="relative w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
+            <Image
               src="/dr.png"
-              alt="Dr. Apple"
-              className="h-8 w-auto object-contain"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+              alt="Dr. Apple Logo"
+              width={32}
+              height={32}
+              className="object-contain"
+              priority
             />
-            <span className="text-[16px] font-bold tracking-tight text-silver-900 dark:text-white group-hover:text-deep-orange-500 transition-colors">
-              Dr. Apple
-            </span>
-          </Link>
-
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center justify-center gap-1 flex-1 px-8">
-            {NAV_LINKS.map((link) => {
-              const active = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={clsx(
-                    "relative px-3 py-2 text-[13px] font-medium tracking-wide transition-colors duration-200",
-                    active
-                      ? "text-deep-orange-500 font-semibold"
-                      : "text-silver-600 dark:text-silver-400 hover:text-silver-900 dark:hover:text-white"
-                  )}
-                >
-                  {link.label}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-deep-orange-500 rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right Action Buttons */}
-          <div className="flex items-center gap-3 z-10 flex-shrink-0">
-            {mounted && (
-              <motion.button
-                whileTap={{ scale: 0.9, rotate: 180 }}
-                onClick={toggleTheme}
-                className="p-2 text-silver-600 dark:text-silver-400 hover:text-silver-900 dark:hover:text-white transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-              </motion.button>
-            )}
-
-            <button className="hidden sm:flex p-2 text-silver-600 dark:text-silver-400 hover:text-silver-900 dark:hover:text-white transition-colors" aria-label="Search">
-              <Search size={17} />
-            </button>
-
-            <Link href="/cart" className="hidden sm:flex p-2 text-silver-600 dark:text-silver-400 hover:text-silver-900 dark:hover:text-white transition-colors" aria-label="Cart">
-              <ShoppingBag size={17} />
-            </Link>
-
-            <button onClick={() => setMobileOpen(true)} className="lg:hidden p-2 text-silver-900 dark:text-white" aria-label="Open menu">
-              <Menu size={22} />
-            </button>
           </div>
-        </div>
-      </header>
+          <span className="font-bold text-lg md:text-xl font-calibri tracking-tight text-zinc-900 dark:text-white group-hover:text-[#FF5A00] transition-colors">
+            Dr. Apple <span className="text-[#FF5A00] font-normal text-xs uppercase tracking-widest ml-0.5">Kano</span>
+          </span>
+        </Link>
 
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-white dark:bg-black flex flex-col"
-          >
-            <div className="h-[60px] container-app flex items-center justify-between border-b border-silver-200 dark:border-white/10">
-              <div className="flex items-center gap-2">
-                <img src="/dr.png" alt="Dr. Apple" className="h-7 w-auto object-contain" />
-                <span className="text-[16px] font-bold text-silver-900 dark:text-white">Dr. Apple</span>
-              </div>
-              <button onClick={() => setMobileOpen(false)} className="p-2 text-silver-900 dark:text-white" aria-label="Close menu">
-                <X size={24} />
-              </button>
-            </div>
-            <nav className="flex-1 overflow-y-auto px-6 py-8">
-              <ul className="space-y-1">
-                {NAV_LINKS.map((link, i) => (
-                  <motion.li
-                    key={link.href}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.04 * i, duration: 0.3 }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={clsx(
-                        "block py-3 text-[20px] font-semibold border-b border-silver-100 dark:border-white/5 transition-colors",
-                        pathname === link.href
-                          ? "text-deep-orange-500"
-                          : "text-silver-900 dark:text-white hover:text-deep-orange-500"
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </nav>
-            <div className="px-6 py-5 border-t border-silver-200 dark:border-white/10 flex items-center justify-between">
-              <button onClick={toggleTheme} className="flex items-center gap-2 text-sm text-silver-600 dark:text-silver-400">
-                {mounted && (theme === "dark" ? <Sun size={16} /> : <Moon size={16} />)}
-                {mounted && (theme === "dark" ? "Light mode" : "Dark mode")}
-              </button>
-              <Link href="/products" onClick={() => setMobileOpen(false)} className="px-5 py-2.5 bg-deep-orange-500 text-white text-sm font-semibold rounded-full">
-                Shop Now
+        {/* DESKTOP NAV LINKS */}
+        <nav className="hidden lg:flex items-center gap-6">
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-sm font-medium font-calibri transition-colors ${
+                  isActive
+                    ? "text-[#FF5A00] font-bold"
+                    : "text-zinc-600 dark:text-zinc-300 hover:text-[#FF5A00] dark:hover:text-[#FF5A00]"
+                }`}
+              >
+                {link.name}
               </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            );
+          })}
+        </nav>
+
+        {/* ACTION BUTTONS */}
+        <div className="flex items-center gap-3">
+          {/* THEME TOGGLE */}
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-full text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-zinc-700" />
+              )}
+            </button>
+          )}
+
+          {/* HOTLINE CTA */}
+          <a
+            href="tel:+2348137843328"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#FF5A00] text-white hover:bg-[#e04f00] transition-all shadow-sm"
+          >
+            <Phone className="w-3.5 h-3.5" /> Call Kano Store
+          </a>
+
+          {/* MOBILE MENU TOGGLE */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE DRAWER */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-2 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top duration-200">
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-xl text-base font-medium font-calibri ${
+                  isActive
+                    ? "bg-[#FF5A00]/10 text-[#FF5A00] font-bold"
+                    : "text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </header>
   );
 }
-
