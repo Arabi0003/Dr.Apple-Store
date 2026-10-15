@@ -58,7 +58,7 @@ export default function Navbar() {
             />
           </div>
           <span className="font-bold text-lg md:text-xl font-calibri tracking-tight text-zinc-900 dark:text-white group-hover:text-[#FF5A00] transition-colors">
-            Dr. Apple <span className="text-[#FF5A00] font-normal text-xs uppercase tracking-widest ml-0.5">Kano</span>
+            Dr. Apple
           </span>
         </Link>
 
@@ -143,3 +143,4 @@ export default function Navbar() {
     </header>
   );
 }
+

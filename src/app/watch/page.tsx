@@ -1,5 +1,5 @@
 ﻿import CategoryLayout from "@/components/category/CategoryLayout";
-export const metadata = { title: "Apple Watch | Dr. Apple Kano" };
+export const metadata = { title: "Apple Watch | Dr. Apple" };
 export default function WatchPage() {
   return (
     <CategoryLayout
@@ -15,3 +15,4 @@ export default function WatchPage() {
     />
   );
 }
+

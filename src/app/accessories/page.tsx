@@ -1,5 +1,5 @@
 ﻿import CategoryLayout from "@/components/category/CategoryLayout";
-export const metadata = { title: "Accessories | Dr. Apple Kano" };
+export const metadata = { title: "Accessories | Dr. Apple" };
 export default function AccessoriesPage() {
   return (
     <CategoryLayout
@@ -15,3 +15,4 @@ export default function AccessoriesPage() {
     />
   );
 }
+

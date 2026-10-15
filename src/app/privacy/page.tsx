@@ -1,8 +1,8 @@
 ﻿import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy | Dr. Apple Kano",
-  description: "Privacy Policy for Dr. Apple Kano in line with NDPR.",
+  title: "Privacy Policy | Dr. Apple",
+  description: "Privacy Policy for Dr. Apple in line with NDPR.",
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
           <h1 className="text-3xl md:text-5xl font-bold text-silver-900 dark:text-white mb-3 tracking-tight">
             Privacy Policy
           </h1>
-          <p className="text-sm text-silver-500 mb-8">Last Updated: October 2026 · Dr. Apple Kano</p>
+          <p className="text-sm text-silver-500 mb-8">Last Updated: October 2026 · Dr. Apple</p>
 
           <div className="space-y-5 text-[15px] leading-relaxed text-silver-700 dark:text-silver-300">
             <p>
@@ -92,3 +92,4 @@ export default function PrivacyPage() {
     </main>
   );
 }
+

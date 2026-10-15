@@ -13,7 +13,7 @@ export default function StoreLocation() {
       <div className="container-app">
         <AnimatedSection variant="fadeUp">
           <SectionHeading
-            title="Visit Dr. Apple Kano"
+            title="Visit Dr. Apple"
             subtitle="Experience Apple devices live in person at our flagship store on Murtala Mohammed Way."
           />
         </AnimatedSection>
@@ -75,3 +75,4 @@ export default function StoreLocation() {
     </section>
   );
 }
+

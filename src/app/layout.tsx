@@ -15,8 +15,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://drapple.com.ng'),
   title: {
-    default: "Dr. Apple Kano — Authentic iPhones, MacBooks, iPads & Accessories",
-    template: "%s | Dr. Apple Kano"
+    default: "Dr. Apple — Authentic iPhones, MacBooks, iPads & Accessories",
+    template: "%s | Dr. Apple"
   },
   description: "Dr. Apple is Kano's #1 trusted retailer for 100% authentic Apple products, including iPhones, MacBooks, iPads, Apple Watches, and original accessories. Visit our 5 Kano branches or order online with instant Kano delivery.",
   keywords: [
@@ -38,17 +38,17 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: "Dr. Apple Kano — Authentic Apple Store",
+    title: "Dr. Apple — Authentic Apple Store",
     description: "Authentic Apple products, MacBooks, iPhones, iPads & accessories in Kano, Nigeria. Visit our 5 flagship branches.",
     url: 'https://drapple.com.ng',
-    siteName: 'Dr. Apple Kano',
+    siteName: 'Dr. Apple',
     locale: 'en_NG',
     type: 'website',
     images: [{ url: '/dr.png', width: 512, height: 512, alt: 'Dr. Apple Logo' }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Dr. Apple Kano — Authentic Apple Store",
+    title: "Dr. Apple — Authentic Apple Store",
     description: "Authentic Apple products, MacBooks, iPhones, iPads & accessories in Kano, Nigeria.",
     images: ['/dr.png']
   },
@@ -73,7 +73,7 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ElectronicsStore',
-    name: 'Dr. Apple Kano',
+    name: 'Dr. Apple',
     image: 'https://drapple.com.ng/dr.png',
     '@id': 'https://drapple.com.ng',
     url: 'https://drapple.com.ng',
@@ -134,3 +134,4 @@ export default function RootLayout({
     </html>
   );
 }
+

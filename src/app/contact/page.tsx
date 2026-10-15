@@ -4,8 +4,8 @@ import ContactForm from "@/components/contact/ContactForm";
 import BranchLocations from "@/components/contact/BranchLocations";
 
 export const metadata = {
-  title: "Contact Us | Dr. Apple Kano",
-  description: "Get in touch with Dr. Apple Kano. Find our branch locations, email us, or call our support lines.",
+  title: "Contact Us | Dr. Apple",
+  description: "Get in touch with Dr. Apple. Find our branch locations, email us, or call our support lines.",
 };
 
 export default function ContactPage() {
@@ -23,3 +23,4 @@ export default function ContactPage() {
     </main>
   );
 }
+

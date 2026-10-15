@@ -301,7 +301,7 @@ export default function IPhonePage() {
             Looking for a specific model, trade-in, or custom color?
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6 max-w-xl mx-auto">
-            Contact Dr. Apple Kano directly. We accept official trade-ins of clean old iPhones and supply custom storage configurations.
+            Contact Dr. Apple directly. We accept official trade-ins of clean old iPhones and supply custom storage configurations.
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/branches">
@@ -316,5 +316,6 @@ export default function IPhonePage() {
     </div>
   );
 }
+
 
 

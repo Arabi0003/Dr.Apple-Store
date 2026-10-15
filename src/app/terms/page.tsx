@@ -1,8 +1,8 @@
 ﻿import Link from "next/link";
 
 export const metadata = {
-  title: "Terms of Use | Dr. Apple Kano",
-  description: "Terms of Use for Dr. Apple Kano retail stores and website.",
+  title: "Terms of Use | Dr. Apple",
+  description: "Terms of Use for Dr. Apple retail stores and website.",
 };
 
 export default function TermsPage() {
@@ -16,11 +16,11 @@ export default function TermsPage() {
           <h1 className="text-3xl md:text-5xl font-bold text-silver-900 dark:text-white mb-3 tracking-tight">
             Terms of Use
           </h1>
-          <p className="text-sm text-silver-500 mb-8">Last Updated: October 2026 · Dr. Apple Kano</p>
+          <p className="text-sm text-silver-500 mb-8">Last Updated: October 2026 · Dr. Apple</p>
 
           <div className="space-y-5 text-[15px] leading-relaxed text-silver-700 dark:text-silver-300">
             <p>
-              Welcome to Dr. Apple Kano. These Terms of Use (&quot;Terms&quot;) govern your access to and use of our website,
+              Welcome to Dr. Apple. These Terms of Use (&quot;Terms&quot;) govern your access to and use of our website,
               retail locations across Kano State, and related services (collectively, the &quot;Services&quot;). By accessing
               or using our Services, you agree to be bound by these Terms and our Privacy Policy. If you do not agree,
               please do not use our Services.
@@ -111,3 +111,4 @@ export default function TermsPage() {
     </main>
   );
 }
+

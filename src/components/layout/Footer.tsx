@@ -65,7 +65,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-silver-200 dark:border-white/10 w-full flex flex-col items-center justify-center gap-4 text-center">
           <p className="text-[13px] text-silver-600 dark:text-silver-400 text-center">
-            Copyright &copy; {year} <span className="font-bold text-silver-900 dark:text-white">Dr. Apple Kano</span>. All rights reserved.
+            Copyright &copy; {year} <span className="font-bold text-silver-900 dark:text-white">Dr. Apple</span>. All rights reserved.
           </p>
 
           {/* Cleaned up Yalerima Credit (URL hidden) */}
@@ -88,3 +88,4 @@ export default function Footer() {
     </footer>
   );
 }
+
