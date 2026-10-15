@@ -1,0 +1,21 @@
+﻿{
+  "name": "Dr. Apple Kano — Premium Store",
+  "short_name": "Dr. Apple",
+  "description": "Kano's Premier Authorized Retailer for Authentic Apple MacBooks, iPhones, iPads, Watches & Accessories.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FF5A00",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/dr.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
