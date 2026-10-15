@@ -41,7 +41,7 @@ export default function HomePage() {
             poster="/dr.png"
             className="absolute inset-0 w-full h-full object-cover opacity-50 dark:opacity-80"
           >
-            <source src="/dr.mp4" type="video/mp4" />
+            <source src="/drs.mp4?v=2" type="video/mp4" /><source src="/dr.mp4?v=2" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-white/70 dark:bg-black/55 transition-colors duration-500" />
         </motion.div>
@@ -151,3 +151,4 @@ export default function HomePage() {
     </main>
   );
 }
+
