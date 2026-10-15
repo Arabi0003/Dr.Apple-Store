@@ -28,11 +28,19 @@ export default function HomePage() {
   return (
     <main ref={containerRef} className="relative w-full min-h-screen transition-colors duration-300 overflow-x-hidden">
 
-      {/* Stable Video Background */}
+      {/* ULTRA FAST LIGHTWEIGHT BACKGROUND VIDEO */}
       <motion.div style={{ opacity: bgOpacity }} className="fixed inset-0 w-full h-full z-[-1] pointer-events-none">
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 bg-gradient-to-br from-silver-200 to-white dark:from-black dark:to-zinc-900" />
-          <video autoPlay loop muted playsInline preload="auto" poster="/dr.png" className="absolute inset-0 w-full h-full object-cover opacity-50 dark:opacity-80">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/dr.png"
+            className="absolute inset-0 w-full h-full object-cover opacity-50 dark:opacity-80"
+          >
             <source src="/dr.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-white/70 dark:bg-black/55 transition-colors duration-500" />
@@ -50,7 +58,7 @@ export default function HomePage() {
       <section className="relative z-10 py-12 md:py-16">
         <ScrollReveal variant="stagger" className="container-app">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-            {highlights.map((h, i) => (
+            {highlights.map((h) => (
               <motion.div key={h.title} variants={childFadeUp} whileHover={{ y: -5 }} className="rounded-2xl border border-silver-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-lg p-6 shadow-sm">
                 <div className="w-12 h-12 rounded-full bg-deep-orange-500/10 text-deep-orange-500 flex items-center justify-center mb-4">
                   <h.icon size={22} />
@@ -72,7 +80,7 @@ export default function HomePage() {
       <section className="relative z-10 py-10 md:py-16">
         <ScrollReveal variant="blurIn" className="container-app">
           <div className="relative h-[280px] sm:h-[360px] md:h-[480px] rounded-3xl overflow-hidden border border-silver-200 dark:border-white/10 shadow-lg">
-            <Image src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1800&q=80" alt="Apple ecosystem" fill className="object-cover" sizes="100vw" />
+            <Image src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1800&q=80" alt="Apple ecosystem" fill className="object-cover" sizes="100vw" priority />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent" />
             <div className="absolute inset-0 flex items-center">
               <div className="px-6 sm:px-10 md:px-14 max-w-xl">
